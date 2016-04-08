@@ -1,0 +1,41 @@
+#include<iostream>
+#include<cmath>
+#include<cstdio>
+#include<cstring>
+#include<algorithm>
+# define r 1000000
+bool prime[r];
+void sieve()                               //Sieve function definition
+{
+int i,j;
+ 
+	for(i=0;i<r;i++)
+	prime[i]=true;
+	
+	prime[0]=false;
+	prime[1]=false;
+	for(i=2;i*i<r;i++)
+	{
+		if(prime[i]==true)
+		{
+			for(j=i*i;j<r;j+=i)
+			prime[j]=false;
+		}
+	}
+}
+using namespace std;
+                                            //Program to check prime no.s in the given range
+main(){
+ sieve();
+    int tt;
+    scanf("%d",&tt);
+    while(tt--)
+    {
+        int a,b,count=0,i;
+        scanf("%d%d",&a,&b);
+        for(i=a;i<=b;i++)
+        if(prime[i]==true)
+        count++;
+        printf("%d\n",count);
+	}
+      } 
